@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Coatings - Premium Painting, Epoxy, and Decorative Concrete Services in Fruitland Park, FL and surrounding areas.">
+    
+    <title>{{ page.title }} | Advanced Coatings</title>
+    
+    {% include styles.html %}
+</head>
+<body>
 
+    <header>
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <h2 style="color:white; margin:0; line-height:1;"><span class="text-yellow">ADVANCED</span> COATINGS</h2>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#home">HOME</a>
+                <a href="#about">ABOUT US</a>
+                <a href="#services">SERVICES</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#reviews">REVIEWS</a>
+            </nav>
+
+            <div class="header-contact">
+                <span style="color:white; font-size:0.8rem;">Call for a Free Estimate!</span>
+                <a href="tel:+13522550145" class="phone-highlight"><i class="fas fa-phone-alt"></i> (352) 255-0145</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="text-yellow">Advanced Coatings</h3>
+                    <p>Beyond Painting.</p>
+                    <p style="margin-top:20px;">
+                        Trust our home improvement contractor to provide high-quality services you can afford.
+                    </p>
+                </div>
+
+                <div>
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt text-yellow"></i> Fruitland Park, FL</p>
+                    <p><i class="fas fa-phone text-yellow"></i> (352) 255-0145</p>
+                    <p><i class="fas fa-envelope text-yellow"></i> advancecoatings@yahoo.com</p>
+                    <p><i class="fas fa-clock text-yellow"></i> Open 24 Hours</p>
+                </div>
+
+                <div>
+                    <h4>Service Area</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111003.54341935634!2d-81.97960309530415!3d28.868725832789966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7c10427301d2d%3A0xc3f83196939634e9!2sFruitland%20Park%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000" 
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Advanced Coatings Inc. | Designed with <i class="fas fa-paint-brush text-yellow"></i> in Florida</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
