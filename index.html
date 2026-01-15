@@ -110,7 +110,7 @@ description: nyll
         </div>
         
         <div class="gallery-grid">
-            {% for img in page.gallery_images %}
+            {% for img in data.gallery %}
             <div class="gallery-item">
                 <img src="{{ img.url }}" alt="{{ img.alt }}" class="gallery-img">
             </div>
@@ -128,7 +128,7 @@ description: nyll
         </div>
 
         <div class="review-grid">
-            {% for review in page.reviews %}
+            {% for review in data.reviews %}
             <div class="review-card">
                 <div class="stars">
                     {% for i in (1..review.stars) %}
