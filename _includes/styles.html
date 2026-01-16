@@ -241,8 +241,8 @@
     transform: scale(1.1);
   }
 
- /* ============================================
-     GALLERY SECTION - MASONRY STYLE GRID
+/* ============================================
+     GALLERY SECTION - STRIP THUMBNAIL SYSTEM
      ============================================ */
   .gallery-section {
     position: relative;
@@ -272,72 +272,140 @@
     z-index: 1;
   }
 
-  /* Masonry grid using CSS columns */
-  .gallery-grid-featured {
-    column-count: 3;
-    column-gap: 15px;
+  /* Strip Gallery Container */
+  .strip-gallery-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    min-height: 600px;
   }
 
-  .gallery-item-featured {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 15px;
+  /* Thumbnail Strips - Left Side */
+  .thumbnail-strips-left,
+  .thumbnail-strips-right {
+    flex: 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .thumbnail-strip {
+    height: 50px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: var(--transition);
-    break-inside: avoid;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
-  .gallery-img-featured {
+  .thumbnail-strip img {
     width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.5s ease, filter 0.3s ease;
-    filter: brightness(0.9);
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+    filter: brightness(0.7);
   }
 
-  .gallery-item-featured:hover .gallery-img-featured {
-    transform: scale(1.05);
+  .thumbnail-strip:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-yellow);
+    z-index: 10;
+  }
+
+  .thumbnail-strip:hover img {
     filter: brightness(1);
   }
 
-  .gallery-overlay-hover {
+  .thumbnail-strip.active {
+    border-color: var(--primary-yellow);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  }
+
+  .thumbnail-strip.active img {
+    filter: brightness(1);
+  }
+
+  .thumbnail-strip.locked {
+    border-color: var(--primary-yellow);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    animation: pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(255, 215, 0, 1);
+    }
+  }
+
+  /* Center Preview Area */
+  .center-preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--darker-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    cursor: pointer;
+  }
+
+  .center-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.15s ease;
+  }
+
+  .preview-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 215, 0, 0.85);
+    background: rgba(255, 215, 0, 0.9);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: var(--transition);
   }
 
-  .gallery-overlay-hover i {
-    font-size: 3rem;
-    color: var(--darker-bg);
-  }
-
-  .gallery-item-featured:hover .gallery-overlay-hover {
+  .center-preview:hover .preview-overlay {
     opacity: 1;
   }
 
+  .preview-overlay i {
+    font-size: 4rem;
+    color: var(--darker-bg);
+    margin-bottom: 15px;
+  }
+
+  .preview-overlay p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--darker-bg);
+    text-transform: uppercase;
+  }
+
   /* ============================================
-     LIGHTBOX MODAL
+     LIGHTBOX MODAL - FULL EDGE-TO-EDGE
      ============================================ */
   .lightbox-modal {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
     z-index: 9999;
     align-items: center;
     justify-content: center;
@@ -352,8 +420,11 @@
 
   .lightbox-content {
     position: relative;
-    max-width: 90%;
-    max-height: 90%;
+    width: 95vw;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: lightboxZoomIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
@@ -384,11 +455,12 @@
   }
 
   .lightbox-img {
-    max-width: 100%;
-    max-height: 90vh;
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
     display: block;
-    border-radius: 4px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    object-fit: contain;
     transition: opacity 0.15s ease;
   }
 
@@ -583,8 +655,34 @@
     .hero h1 { font-size: 2.2rem; }
     .nav-links { display: none; } /* Mobile menu simplified for snippet */
     
-    .gallery-grid-featured {
-      column-count: 1;
+    .strip-gallery-container {
+      flex-direction: column;
+      min-height: auto;
+    }
+    
+    .thumbnail-strips-left,
+    .thumbnail-strips-right {
+      flex: none;
+      flex-direction: row;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      gap: 8px;
+      padding: 10px 0;
+    }
+    
+    .thumbnail-strip {
+      flex: 0 0 80px;
+      height: 60px;
+    }
+    
+    .center-preview {
+      min-height: 400px;
+      order: -1;
+    }
+    
+    .thumbnail-strips-right {
+      display: none; /* Hide right strips on mobile */
     }
     
     .review-card-scroll {
@@ -606,11 +704,21 @@
       right: 10px;
       font-size: 40px;
     }
+
+    .lightbox-img {
+      max-width: 100vw;
+      max-height: 100vh;
+    }
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
-    .gallery-grid-featured {
-      column-count: 2;
+    .thumbnail-strips-left,
+    .thumbnail-strips-right {
+      flex: 0 0 100px;
+    }
+    
+    .thumbnail-strip {
+      height: 45px;
     }
   }
 </style>
