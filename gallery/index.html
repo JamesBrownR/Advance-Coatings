@@ -1,0 +1,289 @@
+---
+layout: default
+title: Gallery
+description: View our complete portfolio of painting and coating projects
+---
+
+<section class="page-header">
+    <div class="container">
+        <h1>Project Gallery</h1>
+        <p>Browse our complete portfolio of over 120 completed projects</p>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <!-- Filter Navigation -->
+        <div class="gallery-filters text-center" style="margin-bottom: 40px;">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="deck">Deck Painting</button>
+            <button class="filter-btn" data-filter="exterior">Exterior Painting</button>
+            <button class="filter-btn" data-filter="concrete">Concrete Driveways</button>
+            <button class="filter-btn" data-filter="pool">Pool Decks</button>
+            <button class="filter-btn" data-filter="epoxy">Epoxy Flooring</button>
+            <button class="filter-btn" data-filter="cabinet">Cabinet Painting</button>
+            <button class="filter-btn" data-filter="interior">Interior Painting</button>
+            <button class="filter-btn" data-filter="countertops">Epoxy Countertops</button>
+            <button class="filter-btn" data-filter="accent">Accent Walls</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            {% for img in site.data.gallery %}
+            <div class="gallery-item {% if img.url contains 'AC2.webp' or img.url contains 'AC3.webp' or img.url contains 'AC4.webp' or img.url contains 'AC5.webp' or img.url contains 'AC101' or img.url contains 'AC102' or img.url contains 'AC103' or img.url contains 'AC104' or img.url contains 'AC105' or img.url contains 'AC106' or img.url contains 'AC107' or img.url contains 'AC108' or img.url contains 'AC109' %}deck{% endif %}{% if img.url contains 'AC13.webp' or img.url contains 'AC17.webp' or img.url contains 'AC21.webp' or img.url contains 'AC23.webp' or img.url contains 'AC24.webp' or img.url contains 'AC32.webp' or img.url contains 'AC34.webp' or img.url contains 'AC38.webp' or img.url contains 'AC39.webp' or img.url contains 'AC40.webp' or img.url contains 'AC51.webp' or img.url contains 'AC55.webp' or img.url contains 'AC56.webp' or img.url contains 'AC59.webp' or img.url contains 'AC62.webp' or img.url contains 'AC63.webp' or img.url contains 'AC66.webp' or img.url contains 'AC67.webp' or img.url contains 'AC118.webp' or img.url contains 'AC42.webp' or img.url contains 'AC44.webp' or img.url contains 'AC69.webp' %}exterior{% endif %}{% if img.url contains 'AC1.webp' or img.url contains 'AC6.webp' or img.url contains 'AC8.webp' or img.url contains 'AC10.webp' or img.url contains 'AC11.webp' or img.url contains 'AC16.webp' or img.url contains 'AC18.webp' or img.url contains 'AC20.webp' or img.url contains 'AC25.webp' or img.url contains 'AC26.webp' or img.url contains 'AC28.webp' or img.url contains 'AC30.webp' or img.url contains 'AC31.webp' or img.url contains 'AC35.webp' or img.url contains 'AC36.webp' or img.url contains 'AC37.webp' or img.url contains 'AC43.webp' or img.url contains 'AC48.webp' or img.url contains 'AC49.webp' or img.url contains 'AC53.webp' or img.url contains 'AC54.webp' or img.url contains 'AC57.webp' or img.url contains 'AC58.webp' or img.url contains 'AC61.webp' or img.url contains 'AC64.webp' or img.url contains 'AC65.webp' or img.url contains 'AC68.webp' or img.url contains 'AC70.webp' or img.url contains 'AC71.webp' or img.url contains 'AC73.webp' or img.url contains 'AC74.webp' or img.url contains 'AC76.webp' or img.url contains 'AC77.webp' or img.url contains 'AC79.webp' or img.url contains 'AC80.webp' or img.url contains 'AC82.webp' or img.url contains 'AC83.webp' or img.url contains 'AC87.webp' or img.url contains 'AC88.webp' or img.url contains 'AC89.webp' or img.url contains 'AC93.webp' or img.url contains 'AC94.webp' or img.url contains 'AC97.webp' or img.url contains 'AC98.webp' or img.url contains 'AC100.webp' or img.url contains 'AC119.webp' %}concrete{% endif %}{% if img.url contains 'AC9.webp' or img.url contains 'AC12.webp' or img.url contains 'AC14.webp' or img.url contains 'AC15.webp' or img.url contains 'AC19.webp' or img.url contains 'AC45.webp' or img.url contains 'AC52.webp' or img.url contains 'AC60.webp' or img.url contains 'AC84.webp' or img.url contains 'AC85.webp' or img.url contains 'AC92.webp' or img.url contains 'AC120.webp' %}pool{% endif %}{% if img.url contains 'AC7.webp' or img.url contains 'AC27.webp' or img.url contains 'AC41.webp' or img.url contains 'AC50.webp' or img.url contains 'AC72.webp' or img.url contains 'AC75.webp' or img.url contains 'AC78.webp' or img.url contains 'AC86.webp' or img.url contains 'AC90.webp' or img.url contains 'AC91.webp' or img.url contains 'AC95.webp' or img.url contains 'AC96.webp' or img.url contains 'AC99.webp' or img.url contains 'AC111.webp' or img.url contains 'AC112.webp' or img.url contains 'AC113.webp' or img.url contains 'AC114.webp' or img.url contains 'AC115.webp' or img.url contains 'AC116.webp' or img.url contains 'AC117.webp' %}epoxy{% endif %}{% if img.url contains 'AC22.webp' or img.url contains 'AC33.webp' or img.url contains 'AC110.webp' or img.url contains 'AC121.webp' or img.url contains 'AC122.webp' or img.url contains 'AC123.webp' %}cabinet{% endif %}{% if img.url contains 'AC81.webp' %}interior{% endif %}{% if img.url contains 'AC47.webp' or img.url contains 'AC124.webp' or img.url contains 'AC125.webp' or img.url contains 'AC126.webp' %}countertops{% endif %}{% if img.url contains 'AC46.webp' %}accent{% endif %}" 
+                 onclick="openLightbox({{ forloop.index0 }})">
+                <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox-modal" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+    <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+    
+    <div class="lightbox-content">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    </div>
+    
+    <div class="lightbox-counter">
+        <span id="lightbox-counter"></span>
+    </div>
+</div>
+
+<section id="contact" class="section-padding" style="background: var(--primary-yellow); color: var(--darker-bg);">
+    <div class="container text-center">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Transform Your Home?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; font-weight: 600;">Contact us today for a free estimate on your next project.</p>
+        <a href="tel:+13522550145" class="btn" style="background: var(--darker-bg); color: white;">Call (352) 255-0145</a>
+    </div>
+</section>
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+    border-bottom: 5px solid var(--primary-yellow);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-grey);
+}
+
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--primary-yellow);
+    background: transparent;
+    color: var(--dark-bg);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: var(--transition);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-yellow);
+    color: var(--darker-bg);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 215, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+.gallery-item-overlay i {
+    font-size: 3rem;
+    color: var(--darker-bg);
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    
+    .gallery-item {
+        height: 200px;
+    }
+    
+    .filter-btn {
+        font-size: 0.75rem;
+        padding: 8px 15px;
+    }
+}
+</style>
+
+<script>
+// Gallery images array
+const galleryImages = [
+    {% for img in site.data.gallery %}
+    {
+        url: "{{ img.url }}",
+        alt: "{{ img.alt }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+];
+
+let currentImageIndex = 0;
+
+function openLightbox(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+    
+    lightboxImg.src = galleryImages[currentImageIndex].url;
+    lightboxImg.alt = galleryImages[currentImageIndex].alt;
+    counter.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
+    
+    lightbox.classList.remove('closing');
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(event) {
+    if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.add('closing');
+        
+        setTimeout(() => {
+            lightbox.classList.remove('active', 'closing');
+            document.body.style.overflow = 'auto';
+        }, 600);
+    }
+}
+
+function changeImage(direction, event) {
+    event.stopPropagation();
+    currentImageIndex += direction;
+    
+    if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+    } else if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+    }
+    
+    const lightboxImg = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+    
+    lightboxImg.style.opacity = '0';
+    
+    setTimeout(() => {
+        lightboxImg.src = galleryImages[currentImageIndex].url;
+        lightboxImg.alt = galleryImages[currentImageIndex].alt;
+        counter.textContent = `Image ${currentImageIndex + 1} of ${galleryImages.length}`;
+        lightboxImg.style.opacity = '1';
+    }, 150);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(event) {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox.classList.contains('active')) {
+        if (event.key === 'ArrowLeft') {
+            changeImage(-1, event);
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1, event);
+        } else if (event.key === 'Escape') {
+            closeLightbox({target: lightbox});
+        }
+    }
+});
+
+// Filter functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.dataset.filter;
+        
+        galleryItems.forEach(item => {
+            if (filter === 'all' || item.classList.contains(filter)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
