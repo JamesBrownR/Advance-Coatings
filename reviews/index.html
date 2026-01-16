@@ -1,0 +1,244 @@
+---
+layout: default
+title: Reviews
+description: Read what our customers say about Advanced Coatings
+---
+
+<section class="page-header">
+    <div class="container">
+        <h1>Customer Reviews</h1>
+        <p>Rated 4.9 Stars on Google with 70+ Reviews</p>
+        <div class="rating-display" style="margin-top: 20px;">
+            <div class="stars" style="font-size: 2rem; color: var(--primary-yellow);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p style="margin-top: 10px; font-size: 1.1rem;">Based on 70+ Google Reviews</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <!-- Filter by Rating -->
+        <div class="review-filters text-center" style="margin-bottom: 40px;">
+            <button class="filter-btn active" data-rating="all">All Reviews</button>
+            <button class="filter-btn" data-rating="5">5 Stars ({{ site.data.reviews | where: "stars", 5 | size }})</button>
+            <button class="filter-btn" data-rating="4">4 Stars ({{ site.data.reviews | where: "stars", 4 | size }})</button>
+            <button class="filter-btn" data-rating="1">1 Star ({{ site.data.reviews | where: "stars", 1 | size }})</button>
+        </div>
+
+        <!-- Reviews Grid -->
+        <div class="reviews-grid">
+            {% for review in site.data.reviews %}
+            <div class="review-card" data-rating="{{ review.stars }}">
+                <div class="review-header">
+                    <div>
+                        <h3 class="review-name">{{ review.name }}</h3>
+                        <div class="stars">
+                            {% for i in (1..review.stars) %}
+                            <i class="fas fa-star"></i>
+                            {% endfor %}
+                            {% assign remaining = 5 | minus: review.stars %}
+                            {% for i in (1..remaining) %}
+                            <i class="far fa-star"></i>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">{{ review.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" style="background: #f9f9f9;">
+    <div class="container text-center">
+        <h2 style="margin-bottom: 20px;">Leave Us a Review</h2>
+        <p style="margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            We'd love to hear about your experience with Advanced Coatings! Share your feedback on Google to help others find quality painting and coating services.
+        </p>
+        <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" class="btn btn-primary">
+            <i class="fab fa-google"></i> Write a Google Review
+        </a>
+    </div>
+</section>
+
+<section id="contact" class="section-padding" style="background: var(--primary-yellow); color: var(--darker-bg);">
+    <div class="container text-center">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Join Our Happy Customers?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; font-weight: 600;">Contact us today for a free estimate on your next project.</p>
+        <a href="tel:+13522550145" class="btn" style="background: var(--darker-bg); color: white;">Call (352) 255-0145</a>
+    </div>
+</section>
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+    border-bottom: 5px solid var(--primary-yellow);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-grey);
+}
+
+.rating-display {
+    display: inline-block;
+}
+
+.review-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--primary-yellow);
+    background: transparent;
+    color: var(--dark-bg);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: var(--transition);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-yellow);
+    color: var(--darker-bg);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--primary-yellow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.review-card[data-rating="1"] {
+    border-left-color: #dc3545;
+}
+
+.review-card[data-rating="4"] {
+    border-left-color: #ffc107;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.review-name {
+    font-size: 1.2rem;
+    color: var(--dark-bg);
+    margin-bottom: 8px;
+}
+
+.stars {
+    color: var(--primary-yellow);
+    font-size: 1rem;
+}
+
+.stars .far {
+    color: #ddd;
+}
+
+.review-text {
+    line-height: 1.7;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Quote icon decoration */
+.review-card::before {
+    content: '\f10d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    color: rgba(255, 215, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .review-card {
+        padding: 20px;
+    }
+    
+    .filter-btn {
+        font-size: 0.75rem;
+        padding: 8px 15px;
+    }
+}
+</style>
+
+<script>
+// Filter functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+const reviewCards = document.querySelectorAll('.review-card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const rating = button.dataset.rating;
+        
+        reviewCards.forEach(card => {
+            if (rating === 'all' || card.dataset.rating === rating) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
