@@ -170,7 +170,7 @@ description: nyll
             
             <!-- Right Column - Thumbnail Strips -->
             <div class="thumbnail-strips-right">
-                {% for img in site.data.gallery limit:10 %}
+                {% for img in site.data.gallery limit:12 %}
                 <div class="thumbnail-strip" 
                      data-index="{{ forloop.index0 }}"
                      onmouseover="previewImage({{ forloop.index0 }})"
@@ -208,7 +208,7 @@ description: nyll
 <script>
 // Gallery images array
 const galleryImages = [
-    {% for img in site.data.gallery limit:10 %}
+    {% for img in site.data.gallery limit:12 %}
     {
         url: "{{ img.url }}",
         alt: "{{ img.alt }}"
