@@ -241,43 +241,192 @@
     transform: scale(1.1);
   }
 
-  /* --- GALLERY (Array Populated) --- */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
+ /* ============================================
+     GALLERY SECTION - ISOTOPE STYLE GRID
+     ============================================ */
+  .gallery-section {
+    position: relative;
+    background: #f9f9f9;
   }
-  .gallery-img {
+
+  /* Paint drip transitions */
+  .paint-drip-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 4px;
+    height: 60px;
+    background: var(--dark-bg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+    z-index: 1;
+  }
+
+  .paint-drip-bottom {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--dark-bg);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%);
+    z-index: 1;
+  }
+
+  /* Isotope masonry-style grid */
+  .gallery-grid-featured {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    grid-auto-rows: 250px;
+  }
+
+  .gallery-item-featured {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: var(--transition);
   }
-  .gallery-img:hover { filter: brightness(0.8); }
 
-  /* --- REVIEWS (Array Populated) --- */
+  /* Random sizing for isotope effect */
+  .gallery-item-featured:nth-child(1) { grid-row: span 2; }
+  .gallery-item-featured:nth-child(3) { grid-column: span 2; }
+  .gallery-item-featured:nth-child(5) { grid-row: span 2; }
+  .gallery-item-featured:nth-child(7) { grid-column: span 2; }
+
+  .gallery-img-featured {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.3s ease;
+    filter: brightness(0.9);
+  }
+
+  .gallery-item-featured:hover .gallery-img-featured {
+    transform: scale(1.1);
+    filter: brightness(1);
+  }
+
+  .gallery-overlay-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 215, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+  }
+
+  .gallery-overlay-hover i {
+    font-size: 3rem;
+    color: var(--darker-bg);
+  }
+
+  .gallery-item-featured:hover .gallery-overlay-hover {
+    opacity: 1;
+  }
+
+  /* ============================================
+     REVIEWS SECTION - HORIZONTAL INFINITE SCROLL
+     ============================================ */
   .reviews-section {
     background-color: var(--dark-bg);
     color: white;
+    overflow: hidden;
   }
-  
-  .review-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  .reviews-scroll-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    margin: 0 -20px; /* Bleed to edges */
+  }
+
+  .reviews-scroll-track {
+    display: flex;
     gap: 30px;
+    animation: scrollReviews 60s linear infinite;
+    width: max-content;
   }
 
-  .review-card {
+  /* Pause animation on hover */
+  .reviews-scroll-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollReviews {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .review-card-scroll {
+    min-width: 350px;
+    max-width: 350px;
     background: var(--darker-bg);
-    padding: 25px;
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-yellow);
+    padding: 30px;
+    border-radius: 12px;
+    border: 3px solid var(--primary-yellow);
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: var(--transition);
   }
 
-  .stars { color: var(--primary-yellow); margin-bottom: 10px; }
-  .review-author { font-weight: bold; margin-top: 15px; font-style: italic; }
+  .review-card-scroll:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.3);
+  }
+
+  /* Paint brush accent on review cards */
+  .paint-brush-accent {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-yellow);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+  }
+
+  .paint-brush-accent::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 15px;
+    background: var(--primary-yellow);
+  }
+
+  .review-card-scroll .stars {
+    color: var(--primary-yellow);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+
+  .review-text-scroll {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    min-height: 100px;
+  }
+
+  .review-author {
+    font-weight: bold;
+    font-style: italic;
+    color: var(--primary-yellow);
+    font-size: 0.9rem;
+  }
 
   /* --- FOOTER --- */
   footer {
