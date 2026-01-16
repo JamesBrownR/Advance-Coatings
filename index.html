@@ -132,7 +132,7 @@ description: nyll
     </div>
 </section>
 
-<!-- GALLERY SECTION WITH MASONRY GRID & PAINT TRANSITION -->
+<!-- GALLERY SECTION WITH STRIP THUMBNAILS & CENTER PREVIEW -->
 <section id="gallery" class="section-padding gallery-section">
     <!-- Paint drip transition from previous section -->
     <div class="paint-drip-top"></div>
@@ -143,16 +143,40 @@ description: nyll
             <p>See the difference Advanced Coatings makes.</p>
         </div>
         
-        <!-- Masonry-style featured gallery grid -->
-        <div class="gallery-grid-featured">
-            {% for img in site.data.gallery limit:10 %}
-            <div class="gallery-item-featured" onclick="openLightbox({{ forloop.index0 }})">
-                <img src="{{ img.url }}" alt="{{ img.alt }}" class="gallery-img-featured" loading="lazy">
-                <div class="gallery-overlay-hover">
-                    <i class="fas fa-search-plus"></i>
+        <!-- Strip Gallery System -->
+        <div class="strip-gallery-container">
+            <!-- Left Column - Thumbnail Strips -->
+            <div class="thumbnail-strips-left">
+                {% for img in site.data.gallery limit:10 %}
+                <div class="thumbnail-strip" 
+                     data-index="{{ forloop.index0 }}"
+                     onmouseover="previewImage({{ forloop.index0 }})"
+                     onclick="lockImage({{ forloop.index0 }})">
+                    <img src="{{ img.url }}" alt="{{ img.alt }}">
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Center - Large Featured Image -->
+            <div class="center-preview" onclick="openLightbox(currentLockedIndex)">
+                <img id="center-image" src="{{ site.data.gallery[0].url }}" alt="{{ site.data.gallery[0].alt }}">
+                <div class="preview-overlay">
+                    <i class="fas fa-expand"></i>
+                    <p>Click to View Full Screen</p>
                 </div>
             </div>
-            {% endfor %}
+            
+            <!-- Right Column - Thumbnail Strips -->
+            <div class="thumbnail-strips-right">
+                {% for img in site.data.gallery limit:10 %}
+                <div class="thumbnail-strip" 
+                     data-index="{{ forloop.index0 }}"
+                     onmouseover="previewImage({{ forloop.index0 }})"
+                     onclick="lockImage({{ forloop.index0 }})">
+                    <img src="{{ img.url }}" alt="{{ img.alt }}">
+                </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="text-center" style="margin-top: 50px;">
@@ -191,6 +215,63 @@ const galleryImages = [
 ];
 
 let currentImageIndex = 0;
+let currentLockedIndex = 0;
+let isLocked = false;
+
+// Preview image on hover
+function previewImage(index) {
+    if (!isLocked) {
+        const centerImg = document.getElementById('center-image');
+        centerImg.style.opacity = '0';
+        
+        setTimeout(() => {
+            centerImg.src = galleryImages[index].url;
+            centerImg.alt = galleryImages[index].alt;
+            currentImageIndex = index;
+            centerImg.style.opacity = '1';
+        }, 150);
+        
+        // Highlight active thumbnail
+        document.querySelectorAll('.thumbnail-strip').forEach(strip => {
+            strip.classList.remove('active');
+        });
+        document.querySelectorAll(`[data-index="${index}"]`).forEach(strip => {
+            strip.classList.add('active');
+        });
+    }
+}
+
+// Lock image on click
+function lockImage(index) {
+    isLocked = true;
+    currentLockedIndex = index;
+    currentImageIndex = index;
+    
+    const centerImg = document.getElementById('center-image');
+    centerImg.style.opacity = '0';
+    
+    setTimeout(() => {
+        centerImg.src = galleryImages[index].url;
+        centerImg.alt = galleryImages[index].alt;
+        centerImg.style.opacity = '1';
+    }, 150);
+    
+    // Highlight locked thumbnail
+    document.querySelectorAll('.thumbnail-strip').forEach(strip => {
+        strip.classList.remove('active', 'locked');
+    });
+    document.querySelectorAll(`[data-index="${index}"]`).forEach(strip => {
+        strip.classList.add('active', 'locked');
+    });
+    
+    // Unlock after 3 seconds
+    setTimeout(() => {
+        isLocked = false;
+        document.querySelectorAll('.thumbnail-strip').forEach(strip => {
+            strip.classList.remove('locked');
+        });
+    }, 3000);
+}
 
 function openLightbox(index) {
     currentImageIndex = index;
