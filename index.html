@@ -132,23 +132,39 @@ description: nyll
     </div>
 </section>
 
-<section id="gallery" class="section-padding">
+<!-- GALLERY SECTION WITH ISOTOPE GRID & PAINT TRANSITION -->
+<section id="gallery" class="section-padding gallery-section">
+    <!-- Paint drip transition from previous section -->
+    <div class="paint-drip-top"></div>
+    
     <div class="container">
         <div class="text-center" style="margin-bottom: 40px;">
             <h2>Project Gallery</h2>
             <p>See the difference Advanced Coatings makes.</p>
         </div>
         
-        <div class="gallery-grid">
-            {% for img in site.data.gallery %}
-            <div class="gallery-item">
-                <img src="{{ img.url }}" alt="{{ img.alt }}" class="gallery-img">
+        <!-- Isotope-style featured gallery grid -->
+        <div class="gallery-grid-featured">
+            {% for img in site.data.gallery limit:10 %}
+            <div class="gallery-item-featured">
+                <img src="{{ img.url }}" alt="{{ img.alt }}" class="gallery-img-featured" loading="lazy">
+                <div class="gallery-overlay-hover">
+                    <i class="fas fa-search-plus"></i>
+                </div>
             </div>
             {% endfor %}
         </div>
+
+        <div class="text-center" style="margin-top: 50px;">
+            <a href="gallery/index.html" class="btn btn-primary">View Full Gallery (120+ Projects)</a>
+        </div>
     </div>
+
+    <!-- Paint drip transition to next section -->
+    <div class="paint-drip-bottom"></div>
 </section>
 
+<!-- REVIEWS SECTION WITH HORIZONTAL SCROLL -->
 <section id="reviews" class="section-padding reviews-section">
     <div class="container">
         <div class="text-center" style="margin-bottom: 50px;">
@@ -157,22 +173,44 @@ description: nyll
             <p>Rated 4.9 Stars on Google with 70+ Reviews</p>
         </div>
 
-        <div class="review-grid">
-            {% for review in site.data.reviews %}
-            <div class="review-card">
-                <div class="stars">
-                    {% for i in (1..review.stars) %}
-                    <i class="fas fa-star"></i>
-                    {% endfor %}
+        <!-- Horizontal scrolling reviews container -->
+        <div class="reviews-scroll-wrapper">
+            <div class="reviews-scroll-track">
+                {% for review in site.data.reviews %}
+                {% if review.stars == 5 %}
+                <div class="review-card-scroll">
+                    <div class="paint-brush-accent"></div>
+                    <div class="stars">
+                        {% for i in (1..5) %}
+                        <i class="fas fa-star"></i>
+                        {% endfor %}
+                    </div>
+                    <p class="review-text-scroll">"{{ review.text | truncate: 150 }}"</p>
+                    <p class="review-author">— {{ review.name }}</p>
                 </div>
-                <p>"{{ review.text }}"</p>
-                <p class="review-author">- {{ review.name }}</p>
+                {% endif %}
+                {% endfor %}
+                
+                <!-- Duplicate reviews for seamless infinite scroll -->
+                {% for review in site.data.reviews %}
+                {% if review.stars == 5 %}
+                <div class="review-card-scroll">
+                    <div class="paint-brush-accent"></div>
+                    <div class="stars">
+                        {% for i in (1..5) %}
+                        <i class="fas fa-star"></i>
+                        {% endfor %}
+                    </div>
+                    <p class="review-text-scroll">"{{ review.text | truncate: 150 }}"</p>
+                    <p class="review-author">— {{ review.name }}</p>
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         
         <div class="text-center" style="margin-top: 40px;">
-            <a href="https://www.google.com/search?q=advance+coatings+fruitland+park" target="_blank" class="btn btn-outline">Read All Google Reviews</a>
+            <a href="reviews/index.html" class="btn btn-outline">Read All 70+ Reviews</a>
         </div>
     </div>
 </section>
