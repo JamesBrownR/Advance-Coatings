@@ -153,7 +153,7 @@ description: nyll
 <div class="thumbnail-strips-left">
     {% for img in site.data.gallery limit:12 %}
     <div class="thumbnail-strip" 
-         data-index="{{ forloop.index0 }}"
+         data-index="{{ forloop.index0 | plus: 36  }}"
          onmouseover="previewImage({{ forloop.index0 }})"
          onclick="lockImage({{ forloop.index0 }})">
         <img src="{{ img.url }}" alt="{{ img.alt }}">
