@@ -30,7 +30,54 @@ description: View our complete portfolio of painting and coating projects
         <!-- Gallery Grid -->
         <div class="gallery-grid">
             {% for img in site.data.gallery %}
-            <div class="gallery-item {% if img.url contains 'AC2.webp' or img.url contains 'AC3.webp' or img.url contains 'AC4.webp' or img.url contains 'AC5.webp' or img.url contains 'AC101' or img.url contains 'AC102' or img.url contains 'AC103' or img.url contains 'AC104' or img.url contains 'AC105' or img.url contains 'AC106' or img.url contains 'AC107' or img.url contains 'AC108' or img.url contains 'AC109' %}deck{% endif %}{% if img.url contains 'AC13.webp' or img.url contains 'AC17.webp' or img.url contains 'AC21.webp' or img.url contains 'AC23.webp' or img.url contains 'AC24.webp' or img.url contains 'AC32.webp' or img.url contains 'AC34.webp' or img.url contains 'AC38.webp' or img.url contains 'AC39.webp' or img.url contains 'AC40.webp' or img.url contains 'AC51.webp' or img.url contains 'AC55.webp' or img.url contains 'AC56.webp' or img.url contains 'AC59.webp' or img.url contains 'AC62.webp' or img.url contains 'AC63.webp' or img.url contains 'AC66.webp' or img.url contains 'AC67.webp' or img.url contains 'AC118.webp' or img.url contains 'AC42.webp' or img.url contains 'AC44.webp' or img.url contains 'AC69.webp' %}exterior{% endif %}{% if img.url contains 'AC1.webp' or img.url contains 'AC6.webp' or img.url contains 'AC8.webp' or img.url contains 'AC10.webp' or img.url contains 'AC11.webp' or img.url contains 'AC16.webp' or img.url contains 'AC18.webp' or img.url contains 'AC20.webp' or img.url contains 'AC25.webp' or img.url contains 'AC26.webp' or img.url contains 'AC28.webp' or img.url contains 'AC30.webp' or img.url contains 'AC31.webp' or img.url contains 'AC35.webp' or img.url contains 'AC36.webp' or img.url contains 'AC37.webp' or img.url contains 'AC43.webp' or img.url contains 'AC48.webp' or img.url contains 'AC49.webp' or img.url contains 'AC53.webp' or img.url contains 'AC54.webp' or img.url contains 'AC57.webp' or img.url contains 'AC58.webp' or img.url contains 'AC61.webp' or img.url contains 'AC64.webp' or img.url contains 'AC65.webp' or img.url contains 'AC68.webp' or img.url contains 'AC70.webp' or img.url contains 'AC71.webp' or img.url contains 'AC73.webp' or img.url contains 'AC74.webp' or img.url contains 'AC76.webp' or img.url contains 'AC77.webp' or img.url contains 'AC79.webp' or img.url contains 'AC80.webp' or img.url contains 'AC82.webp' or img.url contains 'AC83.webp' or img.url contains 'AC87.webp' or img.url contains 'AC88.webp' or img.url contains 'AC89.webp' or img.url contains 'AC93.webp' or img.url contains 'AC94.webp' or img.url contains 'AC97.webp' or img.url contains 'AC98.webp' or img.url contains 'AC100.webp' or img.url contains 'AC119.webp' %}concrete{% endif %}{% if img.url contains 'AC9.webp' or img.url contains 'AC12.webp' or img.url contains 'AC14.webp' or img.url contains 'AC15.webp' or img.url contains 'AC19.webp' or img.url contains 'AC45.webp' or img.url contains 'AC52.webp' or img.url contains 'AC60.webp' or img.url contains 'AC84.webp' or img.url contains 'AC85.webp' or img.url contains 'AC92.webp' or img.url contains 'AC120.webp' %}pool{% endif %}{% if img.url contains 'AC7.webp' or img.url contains 'AC27.webp' or img.url contains 'AC41.webp' or img.url contains 'AC50.webp' or img.url contains 'AC72.webp' or img.url contains 'AC75.webp' or img.url contains 'AC78.webp' or img.url contains 'AC86.webp' or img.url contains 'AC90.webp' or img.url contains 'AC91.webp' or img.url contains 'AC95.webp' or img.url contains 'AC96.webp' or img.url contains 'AC99.webp' or img.url contains 'AC111.webp' or img.url contains 'AC112.webp' or img.url contains 'AC113.webp' or img.url contains 'AC114.webp' or img.url contains 'AC115.webp' or img.url contains 'AC116.webp' or img.url contains 'AC117.webp' %}epoxy{% endif %}{% if img.url contains 'AC22.webp' or img.url contains 'AC33.webp' or img.url contains 'AC110.webp' or img.url contains 'AC121.webp' or img.url contains 'AC122.webp' or img.url contains 'AC123.webp' %}cabinet{% endif %}{% if img.url contains 'AC81.webp' %}interior{% endif %}{% if img.url contains 'AC47.webp' or img.url contains 'AC124.webp' or img.url contains 'AC125.webp' or img.url contains 'AC126.webp' %}countertops{% endif %}{% if img.url contains 'AC46.webp' %}accent{% endif %}" 
+            {% assign categories = "" %}
+            
+            {% comment %} Deck Painting {% endcomment %}
+            {% if img.url contains 'AC2.webp' or img.url contains 'AC3.webp' or img.url contains 'AC4.webp' or img.url contains 'AC5.webp' or img.url contains 'AC101' or img.url contains 'AC102' or img.url contains 'AC103' or img.url contains 'AC104' or img.url contains 'AC105' or img.url contains 'AC106' or img.url contains 'AC107' or img.url contains 'AC108' or img.url contains 'AC109' %}
+                {% assign categories = categories | append: ' deck' %}
+            {% endif %}
+            
+            {% comment %} Exterior Painting {% endcomment %}
+            {% if img.url contains 'AC13.webp' or img.url contains 'AC17.webp' or img.url contains 'AC21.webp' or img.url contains 'AC23.webp' or img.url contains 'AC24.webp' or img.url contains 'AC32.webp' or img.url contains 'AC34.webp' or img.url contains 'AC38.webp' or img.url contains 'AC39.webp' or img.url contains 'AC40.webp' or img.url contains 'AC42.webp' or img.url contains 'AC44.webp' or img.url contains 'AC51.webp' or img.url contains 'AC55.webp' or img.url contains 'AC56.webp' or img.url contains 'AC59.webp' or img.url contains 'AC62.webp' or img.url contains 'AC63.webp' or img.url contains 'AC66.webp' or img.url contains 'AC67.webp' or img.url contains 'AC69.webp' or img.url contains 'AC118.webp' %}
+                {% assign categories = categories | append: ' exterior' %}
+            {% endif %}
+            
+            {% comment %} Concrete Driveways {% endcomment %}
+            {% if img.url contains 'AC1.webp' or img.url contains 'AC6.webp' or img.url contains 'AC8.webp' or img.url contains 'AC10.webp' or img.url contains 'AC11.webp' or img.url contains 'AC16.webp' or img.url contains 'AC18.webp' or img.url contains 'AC20.webp' or img.url contains 'AC25.webp' or img.url contains 'AC26.webp' or img.url contains 'AC28.webp' or img.url contains 'AC30.webp' or img.url contains 'AC31.webp' or img.url contains 'AC35.webp' or img.url contains 'AC36.webp' or img.url contains 'AC37.webp' or img.url contains 'AC43.webp' or img.url contains 'AC48.webp' or img.url contains 'AC49.webp' or img.url contains 'AC53.webp' or img.url contains 'AC54.webp' or img.url contains 'AC57.webp' or img.url contains 'AC58.webp' or img.url contains 'AC61.webp' or img.url contains 'AC64.webp' or img.url contains 'AC65.webp' or img.url contains 'AC68.webp' or img.url contains 'AC70.webp' or img.url contains 'AC71.webp' or img.url contains 'AC73.webp' or img.url contains 'AC74.webp' or img.url contains 'AC76.webp' or img.url contains 'AC77.webp' or img.url contains 'AC79.webp' or img.url contains 'AC80.webp' or img.url contains 'AC82.webp' or img.url contains 'AC83.webp' or img.url contains 'AC87.webp' or img.url contains 'AC88.webp' or img.url contains 'AC89.webp' or img.url contains 'AC93.webp' or img.url contains 'AC94.webp' or img.url contains 'AC97.webp' or img.url contains 'AC98.webp' or img.url contains 'AC100.webp' or img.url contains 'AC119.webp' %}
+                {% assign categories = categories | append: ' concrete' %}
+            {% endif %}
+            
+            {% comment %} Pool Decks {% endcomment %}
+            {% if img.url contains 'AC9.webp' or img.url contains 'AC12.webp' or img.url contains 'AC14.webp' or img.url contains 'AC15.webp' or img.url contains 'AC19.webp' or img.url contains 'AC45.webp' or img.url contains 'AC52.webp' or img.url contains 'AC60.webp' or img.url contains 'AC84.webp' or img.url contains 'AC85.webp' or img.url contains 'AC92.webp' or img.url contains 'AC120.webp' %}
+                {% assign categories = categories | append: ' pool' %}
+            {% endif %}
+            
+            {% comment %} Epoxy Flooring {% endcomment %}
+            {% if img.url contains 'AC7.webp' or img.url contains 'AC27.webp' or img.url contains 'AC41.webp' or img.url contains 'AC50.webp' or img.url contains 'AC72.webp' or img.url contains 'AC75.webp' or img.url contains 'AC78.webp' or img.url contains 'AC86.webp' or img.url contains 'AC90.webp' or img.url contains 'AC91.webp' or img.url contains 'AC95.webp' or img.url contains 'AC96.webp' or img.url contains 'AC99.webp' or img.url contains 'AC111.webp' or img.url contains 'AC112.webp' or img.url contains 'AC113.webp' or img.url contains 'AC114.webp' or img.url contains 'AC115.webp' or img.url contains 'AC116.webp' or img.url contains 'AC117.webp' %}
+                {% assign categories = categories | append: ' epoxy' %}
+            {% endif %}
+            
+            {% comment %} Cabinet Painting {% endcomment %}
+            {% if img.url contains 'AC22.webp' or img.url contains 'AC33.webp' or img.url contains 'AC110.webp' or img.url contains 'AC121.webp' or img.url contains 'AC122.webp' or img.url contains 'AC123.webp' %}
+                {% assign categories = categories | append: ' cabinet' %}
+            {% endif %}
+            
+            {% comment %} Interior Painting {% endcomment %}
+            {% if img.url contains 'AC81.webp' or img.url contains 'AC121.webp' or img.url contains 'AC122.webp' or img.url contains 'AC123.webp' %}
+                {% assign categories = categories | append: ' interior' %}
+            {% endif %}
+            
+            {% comment %} Epoxy Countertops {% endcomment %}
+            {% if img.url contains 'AC47.webp' or img.url contains 'AC124.webp' or img.url contains 'AC125.webp' or img.url contains 'AC126.webp' %}
+                {% assign categories = categories | append: ' countertops' %}
+            {% endif %}
+            
+            {% comment %} Accent Walls {% endcomment %}
+            {% if img.url contains 'AC46.webp' %}
+                {% assign categories = categories | append: ' accent' %}
+            {% endif %}
+            
+            <div class="gallery-item{{ categories }}" 
                  onclick="openLightbox({{ forloop.index0 }})">
                 <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy">
                 <div class="gallery-item-overlay">
@@ -278,7 +325,9 @@ filterButtons.forEach(button => {
         const filter = button.dataset.filter;
         
         galleryItems.forEach(item => {
-            if (filter === 'all' || item.classList.contains(filter)) {
+            if (filter === 'all') {
+                item.style.display = 'block';
+            } else if (item.classList.contains(filter)) {
                 item.style.display = 'block';
             } else {
                 item.style.display = 'none';
