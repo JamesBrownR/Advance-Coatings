@@ -147,17 +147,18 @@ description: nyll
         
         <!-- Strip Gallery System -->
         <div class="strip-gallery-container">
-            <!-- Left Column - Thumbnail Strips -->
-            <div class="thumbnail-strips-left">
-                {% for img in site.data.gallery limit:12 %}
-                <div class="thumbnail-strip" 
-                     data-index="{{ forloop.index0 }}"
-                     onmouseover="previewImage({{ forloop.index0 }})"
-                     onclick="lockImage({{ forloop.index0 }})">
-                    <img src="{{ img.url }}" alt="{{ img.alt }}">
-                </div>
-                {% endfor %}
-            </div>
+            
+           <!-- Left Column - Thumbnail Strips (first 12) -->
+<div class="thumbnail-strips-left">
+    {% for img in site.data.gallery limit:12 %}
+    <div class="thumbnail-strip" 
+         data-index="{{ forloop.index0 }}"
+         onmouseover="previewImage({{ forloop.index0 }})"
+         onclick="lockImage({{ forloop.index0 }})">
+        <img src="{{ img.url }}" alt="{{ img.alt }}">
+    </div>
+    {% endfor %}
+</div>
             
             <!-- Center - Large Featured Image -->
             <div class="center-preview" onclick="openLightbox(currentLockedIndex)">
@@ -168,17 +169,17 @@ description: nyll
                 </div>
             </div>
             
-            <!-- Right Column - Thumbnail Strips -->
-            <div class="thumbnail-strips-right">
-                {% for img in site.data.gallery limit:12 %}
-                <div class="thumbnail-strip" 
-                     data-index="{{ forloop.index0 }}"
-                     onmouseover="previewImage({{ forloop.index0 }})"
-                     onclick="lockImage({{ forloop.index0 }})">
-                    <img src="{{ img.url }}" alt="{{ img.alt }}">
-                </div>
-                {% endfor %}
-            </div>
+         <!-- Right Column - Thumbnail Strips (offset 12, next 12) -->
+<div class="thumbnail-strips-right">
+    {% for img in site.data.gallery limit:12 offset:12 %}
+    <div class="thumbnail-strip" 
+         data-index="{{ forloop.index0 | plus: 12 }}"
+         onmouseover="previewImage({{ forloop.index0 | plus: 12 }})"
+         onclick="lockImage({{ forloop.index0 | plus: 12 }})">
+        <img src="{{ img.url }}" alt="{{ img.alt }}">
+    </div>
+    {% endfor %}
+</div>
         </div>
 
         <div class="text-center" style="margin-top: 50px;">
