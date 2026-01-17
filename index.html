@@ -251,9 +251,11 @@ function previewImage(index) {
         }, 150);
         
         // Highlight active thumbnail
-        document.querySelectorAll('.thumbnail-strip').forEach(strip => {
-            strip.classList.remove('active');
-        });
+      // AFTER (single delegated listener):
+document.querySelector('.thumbnail-strips-left').addEventListener('mouseover', (e) => {
+    const strip = e.target.closest('.thumbnail-strip');
+    if (strip) previewImage(strip.dataset.index);
+});
         document.querySelectorAll(`[data-index="${index}"]`).forEach(strip => {
             strip.classList.add('active');
         });
