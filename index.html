@@ -151,9 +151,9 @@ description: nyll
             
            <!-- Left Column - Thumbnail Strips (first 12) -->
 <div class="thumbnail-strips-left">
-    {% for img in site.data.gallery limit:12 %}
+    {% for img in site.data.gallery limit:12 offset:48 %}
     <div class="thumbnail-strip" 
-         data-index="{{ forloop.index0 | plus: 36  }}"
+         data-index="{{ forloop.index0 | plus: 48 }}"
          onmouseover="previewImage({{ forloop.index0 }})"
          onclick="lockImage({{ forloop.index0 }})">
         <img src="{{ img.url }}" alt="{{ img.alt }}">
