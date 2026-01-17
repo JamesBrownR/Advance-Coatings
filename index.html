@@ -154,8 +154,8 @@ description: nyll
     {% for img in site.data.gallery limit:12 offset:48 %}
     <div class="thumbnail-strip" 
          data-index="{{ forloop.index0 | plus: 48 }}"
-         onmouseover="previewImage({{ forloop.index0 }})"
-         onclick="lockImage({{ forloop.index0 }})">
+         onmouseover="previewImage({{ forloop.index0 | plus: 48 }})"
+         onclick="lockImage({{ forloop.index0 | plus: 48 }})">
         <img src="{{ img.url }}" alt="{{ img.alt }}">
     </div>
     {% endfor %}
