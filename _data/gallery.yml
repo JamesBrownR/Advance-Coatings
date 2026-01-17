@@ -1,7 +1,7 @@
 # Deck Painting (Images 2-6, 101-109)
   - url: "/Pics/AC2.webp"
     alt: "White painted wooden deck with vertical railing balusters overlooking wooded backyard area"
-  - url: "Pics/AC3.webp"
+  - url: "https://jamesbrownr.github.io/Advance-Coatings/Pics/AC3.webp"
     alt: "Corner view of white painted deck with railing and stairs showing professional finish and clean lines"
   - url: "{{ site.baseurl }}/Pics/AC4.webp"
     alt: "Elevated white painted deck with railing system and bench seating overlooking open yard"
