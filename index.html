@@ -210,7 +210,7 @@ description: nyll
 <script>
 // Gallery images array
 const galleryImages = [
-    {% for img in site.data.gallery limit:12 %}
+    {% for img in site.data.gallery %}
     {
         url: "{{ img.url }}",
         alt: "{{ img.alt }}"
