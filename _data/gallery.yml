@@ -1,5 +1,5 @@
 # Deck Painting (Images 2-6, 101-109)
-  - url: "{{ site.baseurl }}/Pics/AC2.webp"
+  - url: "/Pics/AC2.webp"
     alt: "White painted wooden deck with vertical railing balusters overlooking wooded backyard area"
   - url: "{{ site.baseurl }}/Pics/AC3.webp"
     alt: "Corner view of white painted deck with railing and stairs showing professional finish and clean lines"
